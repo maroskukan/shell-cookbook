@@ -7,9 +7,9 @@
 containerId="$1"
 folder="$2"
 
-if [ ! -d "$folder" ]; then mkdir "$folder"; fi
+if [ ! -d "$folder" ]; then mkdir -p -- "$folder"; fi
 
-grep "$containerId" shipments.csv > "$folder/$containerId.csv"
+grep -- "$containerId" shipments.csv > "$folder/$containerId.csv"
 
 records=$(wc -l "$folder/$containerId.csv" | cut -d' ' -f1)
 
