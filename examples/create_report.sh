@@ -3,12 +3,8 @@
 # Create a report file for a single shipping container
 # Author: Maros Kukan
 
-# Check source file 
-if [[ ! $1 ]]; then
-    printf "Error: Input file not configured\n"
-    printf "Usage: %s INPUT-FILE CONTAINER-ID <OUTPUT-FOLDER>\n" "$0"
-    exit 1
-else
+# Check source file argument
+if [[ $1 ]]; then
     # Check if source file exists
     if [[ ! -e "$1" ]]; then
          printf "Error: Input file %s does not exists\n" "$1"
@@ -16,23 +12,26 @@ else
     else
          input_file="$1"
     fi
-fi
-
-
-if [[ ! $2 ]]; then
-    printf "Error: Container id not specified\n"
+else
+    printf "Error: Input file not configured\n"
     printf "Usage: %s INPUT-FILE CONTAINER-ID <OUTPUT-FOLDER>\n" "$0"
     exit 1
-else    
-    containerId="$2"
 fi
 
 
-# Check if output folder was provided
-if [[ ! $3 ]]; then
-    folder="reports"
+if [[ $2 ]]; then
+    containerId="$2"
 else
+    printf "Error: Container id not specified\n"
+    printf "Usage: %s INPUT-FILE CONTAINER-ID <OUTPUT-FOLDER>\n" "$0"
+    exit 1    
+fi
+
+# Check if output folder was provided if not default to reports
+if [[ $3 ]]; then
     folder="$3"
+else
+    folder="reports"  
 fi
 
 # Check if folder already exists if not create it
