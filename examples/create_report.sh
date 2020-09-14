@@ -4,18 +4,23 @@
 # Author: Maros Kukan
 
 # Verify number of arguments
-if [ "$#" -ne 2 ]; then
-  printf "Usage: %s CONTAINER-ID OUTPUT-FOLDER\n" "$0"
+if [ "$#" -ne 3 ]; then
+  printf "Usage: %s RECORDS CONTAINER-ID OUTPUT-FOLDER\n" "$0"
   exit 1
 fi
 
-# Read arguments from arguments
-containerId="$1"
-folder="$2"
 
+# Store values from arguments
+records="$1"
+containerId="$2"
+folder="$3"
+
+
+# Check if folder already exists
 if [ ! -d "$folder" ]; then mkdir -p -- "$folder"; fi
 
-grep -- "$containerId" shipments.csv > "$folder/${containerId}_report.csv"
+# Filters the source file
+grep -- "$containerId" "$records" > "$folder/${containerId}_report.csv"
 
 records=$(wc -l "$folder/${containerId}_report.csv" | cut -d' ' -f1)
 
