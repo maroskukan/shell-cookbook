@@ -13,7 +13,7 @@ declare -a arr=("ec2-18-212-88-38.compute-1.amazonaws.com"
 for host in "${arr[@]}"
 do
    echo "Checking $host"
-   curl -I -s http://$host:8080 | grep HTTP
+   curl -I -s http://"$host":8080 | grep HTTP
    echo
 done
 
