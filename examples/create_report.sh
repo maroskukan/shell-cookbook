@@ -13,4 +13,4 @@ grep -- "$containerId" shipments.csv > "$folder/$containerId.csv"
 
 records=$(wc -l "$folder/$containerId.csv" | cut -d' ' -f1)
 
-echo "Report $folder/$containerId created with $records records."
+printf "Report %s/%s created with %s records.\n" $folder $containerId $records
