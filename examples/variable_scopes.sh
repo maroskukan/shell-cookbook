@@ -4,7 +4,7 @@
 # Author: Maros Kukan
 
 #
-# Working with set, export, unset 
+# Working with set, export, unset and declare
 #
 
 # Set local variable for shell and optionally single command launched from it
