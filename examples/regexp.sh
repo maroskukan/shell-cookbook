@@ -21,3 +21,7 @@ declare -l test_var
 read test_var # Enter color
 [[ $test_var =~ colou?r ]] && echo "Its a match"
 
+unset user_name
+declare -l user_name
+read user_name # Enter bob_admin
+[[ $user_name =! _admin$ ]] && echo "User is admin"
