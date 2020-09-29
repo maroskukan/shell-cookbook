@@ -20,6 +20,13 @@ crontab -e
 # Unset evironment variable
 unset EDITOR
 
+# Multiple words in single varilable
+# Bash creates two files, wherase Zsh creates single file
+files="file1 file2"
+zsh -c "touch $files"
+bash -c "touch $files"
+
+
 #
 # Working with declare
 #
@@ -75,4 +82,12 @@ user_name=([first]=maros [last]=kukan)
 echo ${user_name[first]}
 unset user_name
 
-# Display all elements of a array
+# Iterating over associative array and print all key/value pairs - not working with zsh
+declare -A user_name
+user_name=([first]=maros [last]=kukan)
+for key in "${!user_name[@]}"
+do
+    # Print the key Value
+    echo "Key $key is associated with value of ${user_name[$key]}"
+done
+unset user_name
