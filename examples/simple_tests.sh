@@ -6,6 +6,11 @@
 # Condition is true if command evaluates to 0, otherwise its false and evaulates to 1
 if mkdir a 2>/dev/null; then echo "Exit code is $? which is ok"; else echo "Exit code is $? which is error"; fi
 
+# Conditional expression
+declare -l str=something
+if [[ $str = "something" ]]; then echo "Variable '\$str' is equal to 'something'"; else declare str="something"; fi
+unset str
+
 # Variable days will be set to 30 making condition false.
 declare -i days=30
 if [ $days -lt 1 ]; then echo "Enter correct value"; fi
