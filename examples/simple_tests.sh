@@ -3,6 +3,9 @@
 # Demostrates usage of simple tests conditions
 # Author: Maros Kukan
 
+# Condition is true if command evaluates to 0, otherwise its false and evaulates to 1
+if mkdir a 2>/dev/null; then echo "Exit code is $? which is ok"; else echo "Exit code is $? which is error"; fi
+
 # Variable days will be set to 30 making condition false.
 declare -i days=30
 if [ $days -lt 1 ]; then echo "Enter correct value"; fi
@@ -27,7 +30,7 @@ else
     echo "All good";
 fi
 
-# If, Elif, Else
+# If, Elif, Else, Fi
 declare -i days
 read days
 
