@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Installs lint tool for shell scripts
-# Tested on Ubuntu 20.04 LTS and CentOS 7.8
+# Description: Installs lint tool for shell scripts
+# Validation: Tested on Ubuntu 20.04 LTS and CentOS 7.8
 # Author: Maros Kukan
 
 if [[ ! -z "$(which yum)" ]]; then
