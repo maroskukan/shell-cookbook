@@ -7,13 +7,13 @@
 if [[ ! -z "$(which yum)" ]]; then
     yum install -y epel-release
     yum install -y ShellCheck
-    exit code 0
+    exit 0
 elif [[ ! -z "$(which apt)" ]]; then
     apt update
     apt install -y shellcheck
-    exit code 0
+    exit 0
 else
     echo "Error can't install package shellcheck"
-    exit 1;
+    exit 1
 fi
 
