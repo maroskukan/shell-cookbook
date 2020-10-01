@@ -27,7 +27,7 @@ if [ $days -lt 1  ] || [ $days -gt 30 ]; then echo "Enter correct value"; fi
 declare -i days=31
 if (( days < 1 || days > 30)); then echo "Enter correct vlue"; fi
 
-# Multiple coditions
+# Multiple conditions
 declare -i days=30
 if (( days < 1 || days > 30)); then 
     echo "Enter correct vlue"; 
