@@ -25,5 +25,5 @@ while true; do
         4) create_dir;;
         5) exit 0;;
     esac
-    read -n1 -p "Press any key"
+    read -r -n 1 -p "Press any key"
 done
