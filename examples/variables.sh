@@ -91,3 +91,19 @@ do
     echo "Key $key is associated with value of ${user_name[$key]}"
 done
 unset user_name
+
+# To retrieve lenght of string in variable
+declare var=Hello
+declare var_len=${#var}
+echo "$var_len"
+
+# Special variables
+# $* contains all script aguments
+# $# contains number of script arguments
+# $? contains exit status for last command
+ls /
+echo $?
+
+# $! contains previous argument
+ls /
+ls -al $!
