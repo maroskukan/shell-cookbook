@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Demostrates use of while and case to create menu
+# Description: Demostrates the use of while and case to create menu
 # Author: Maros Kukan
 
 function create_dir () {
