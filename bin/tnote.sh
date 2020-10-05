@@ -23,6 +23,6 @@ if [[ $note ]]; then
     echo "Note '$note' saved to $filename"
     exit 0
 else
-    echo "No input; note was't saved."
+    echo "No input; note was't saved." 1>&2
     exit 1
 fi
