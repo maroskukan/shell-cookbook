@@ -12,6 +12,13 @@ while (( x > 0 )); do
 done
 echo "Variable x is set to $x after until loop"
 
+# Keeps asking question until it is answered
+declare answer
+while [[ -z $answer ]]; do
+  read -r -p "What is your answer: " answer
+done
+
+
 declare -i x=10
 until (( x == 0 )); do
   echo "$x"
