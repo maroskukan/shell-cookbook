@@ -3,6 +3,13 @@
 # Demostrates the use of for loop
 # Author: Maros Kukan
 
+# Classic Loop (this behaves differently in Bash vs Zsh)
+declare sentence="just a list of words"
+for word in $sentence; do
+    echo $word;
+done
+
+
 # C-style Loop
 for ((i=0; i<5; i++)); do
     echo "$i"
@@ -10,7 +17,6 @@ for ((i=0; i<5; i++)); do
 done
 
 for ((i=5; i>0; i--)); do echo "$i"; done
-
 
 # Iterating an Array
 declare -a users=("bob" "joe" "sue")
