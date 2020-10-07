@@ -40,3 +40,18 @@ function print_age () {
     local age=$1
     echo "Your age is $age"
 }
+
+# Separator function
+function separate () {
+    # Add default value when no argument is provided
+    declare line
+    if [[ $1 ]]; then
+        local char="$1"
+    else
+        local char="*"
+    fi
+    for (( i=0; i<$COLUMNS; i++ )); do
+        line="${line}${char}"
+    done
+    printf "$line\n"
+}
