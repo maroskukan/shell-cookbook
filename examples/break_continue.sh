@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-# Demostrates usage of break and continue
+# Description: Demostrates usage of break and continue
 # Author: Maros Kukan
 
 # List files not Directories
+# continue skips the rest of current iteration and continues with next iteration
 for file in $(ls); do
     if [[ -d $file ]]; then
         continue
