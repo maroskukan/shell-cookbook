@@ -25,5 +25,5 @@ for (( i=0; i<length; i++ )); do
     line="${line}${char}"
 done
 
-printf "$line\n"
+printf "%s\n" "$line"
 exit 0
