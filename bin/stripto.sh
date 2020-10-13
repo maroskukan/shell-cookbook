@@ -12,7 +12,7 @@ fi
 declare found
 
 # Read up to first match
-while read -r; do
+while read -r || [[ $REPLY ]]; do
     if [[ ! $found ]]; then
         if [[ $REPLY =~ $1 ]]; then
             found="true"
