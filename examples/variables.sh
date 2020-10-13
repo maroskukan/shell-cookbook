@@ -63,6 +63,18 @@ declare -i days=30
 days=Monday
 declare -p days
 
+declare p="4+5"
+echo $p # will print 4+5
+declare -i p
+echo $p # will print 9
+
+# Arithmetic expressions - C-like syntax
+let n=100/2
+((++n))
+((--n))
+((p=n / 5))
+(( p= $(ls | wc -l) * 10))
+
 # 
 # Working with Arrays
 #
