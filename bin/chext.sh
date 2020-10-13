@@ -3,11 +3,7 @@
 # Description: Changes filename extension
 # Author: Maros Kukan
 
-if [[ $# -ne 2 ]]; then
-    echo "Two arguments required, example below"
-    echo "$0 txt zip"
-    exit 1
-fi
+[[ $# -ne 2 ]] && { echo "Two arguments required, example: $0 txt zip" >&2; exit 1; }
 
 for file in *"$1"; do # *"$1" is a wildcard matching all files with given extension
     base=$(basename "$file" "$1")
