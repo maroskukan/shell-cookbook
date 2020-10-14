@@ -6,8 +6,8 @@
 # Enable debug
 #set -x
 
-declare date=$(date +%Y-%m-%d)
-declare topic="$1"
+declare -r date=$(date +%Y-%m-%d)
+declare -r topic="$1"
 declare filename="${HOME}/${topic}notes.txt"
 declare note
 
