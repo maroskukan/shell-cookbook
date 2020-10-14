@@ -4,6 +4,29 @@
 # Author: Maros Kukan
 
 
+# Storing Values in Basic Array
+x[0]="some"
+x[1]="word"
+
+# Retrieving Values in Basic Array
+${x[0]}
+${x[1]}
+
+# Retrieving all Values in Basic Array
+${x[@]}
+${x[*]}
+
+# Initializing an array
+ar=(1 2 3 a b c)
+declare -p ar # Returns declare -a ar=([0]="1" [1]="2" [2]="3" [3]="a" [4]="b" [5]="c")
+
+# Counting elements in array
+ar=(a b c d e f)
+${#ar[@]} # Returns "6"
+
+# Indices in array
+${!array[@]}
+
 # Example-1: Append array element by using shorthand operator
 
 # Declare a string array
