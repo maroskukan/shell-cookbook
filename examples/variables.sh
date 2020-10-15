@@ -110,7 +110,10 @@ declare var_len=${#var}
 echo "$var_len"
 
 # Special variables
-# $* contains all script aguments
+# $0 contains name of the script when it was called
+# $1-$9 ${10}...  contain positional parameters
+# $@ contains all script arguments, but when double quoted "$1" "$2" "$3" ... "$N", parameters contain multiple words stay intact, preferred way
+# $* contains all script arguments, but when double quoted: "$1 $2 $3 ... $N", parameters are joined togetner
 # $# contains number of script arguments
 # $? contains exit status for last command
 ls /
@@ -119,3 +122,6 @@ echo $?
 # $! contains previous argument
 ls /
 ls -al $!
+
+
+
