@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# This script creates a new bash script and sets executive permission
+# Description: This script creates one or more bash scripts and sets executive permission
 # Author: Maros Kukan
 
 # Test if argument exists, if not exit
 if [[ ! $1 ]]; then
-    echo "Missing argument" >&2
+    echo "Atleast one argument required" >&2
     exit 1
 fi
 
