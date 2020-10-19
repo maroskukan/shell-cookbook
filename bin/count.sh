@@ -3,11 +3,30 @@
 # Description: This script prints a range of numbers
 # Author: Maros Kukan
 
-# Usage: count [-r] [-b n] [-s n] stop
-# -b gives the number to begin with (default: 0)
-# -r reverses the count
-# -s sets step size (default: 1)
-# counting will stop at stop.
+# Usage definition
+usage () {
+    cat <<END
+count [-r] [-b n] [-s n] stop
+
+Print each number up to stop, beginning at 0
+      -b: number up to begin with (default: 0)
+      -h: show this help message
+      -r: reverses the count
+      -s: sets step size (default: 1)
+END
+}
+
+# Generic Error Handling
+error () {
+    echo "Error: $1"
+    usage
+    exit $2
+} >&2
+
+# Verifies if argument is a number
+isnum () {
+    [[ $1 =~ ^[0-9]+$ ]]
+}
 
 declare reverse=""
 declare -i begin=0
@@ -16,25 +35,29 @@ declare -i step=1
 # Takes b and s with option and r without option
 # Non Silent mode "b:s:r"
 
-while getopts ":b:s:r" opt; do 
+while getopts ":hb:s:r" opt; do 
     case $opt in
         r)
             reverse="yes"
             ;;
         b)
-            [[ ${OPTARG} =~ ^[0-9]+$ ]] || { echo "${OPTARG} is not a number" >&2; exit 1; }
+            isnum ${OPTARG} || error "${OPTARG} is not a number" 1
             start="${OPTARG}"
             ;;
+        h)
+            usage
+            exit 0
+            ;;
         s)
-            [[ ${OPTARG} =~ ^[0-9]+$ ]] || { echo "${OPTARG} is not a number" >&2; exit 1; }
+            isnum ${OPTARG} =~ ^[0-9]+$ || error "${OPTARG} is not a number" 1
             step="${OPTARG}"
             ;;
         :)
-            echo "Option -${OPTARG} is missing an argument"
+            error "Option -${OPTARG} is missing an argument"
             exit 1
             ;;
         \?)
-            echo "Unknown option: -${OPTARG}" >&2
+            error "Unknown option: -${OPTARG}" 3
             exit 1
             ;;
     esac
