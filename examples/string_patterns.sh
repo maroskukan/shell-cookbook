@@ -14,3 +14,5 @@ f2=${f##*/}
 # Removes file extension
 f3=${f%.*}
 
+# Keeps only file path
+f4=${f%/*}
