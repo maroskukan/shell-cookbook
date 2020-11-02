@@ -21,6 +21,29 @@ declare -f say_hello
 declare -xf say_hello
 
 # Creating function with argument(s)
+sum () {
+    return $(( $1 + $2 ))
+}
+
+# Calling function with argument
+sum 4 5
+
+# Displaying return of previous function
+echo $?
+
+# Returns 0 only when provided arguments starts with "a" or "A")
+starts_with_a() {
+    [[ $1 == [aA]* ]];
+    return $?
+}
+
+# Using function inside a condition
+if starts_with_a Aeroplane; then
+    echo "Yes"
+else
+    echo "No"
+fi
+
 function create_user () {
     if ( getent passwd $1 > /dev/null ); then
         echo "$1 already exists";
