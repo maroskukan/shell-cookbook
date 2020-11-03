@@ -16,7 +16,7 @@
 # Version 1.1 - uses builtin bash parameter extension
 for file in *"$1"; do
     echo "$file > ${file/%$1/$2}"
-    mv "$file" "${file/%$1/$2}"
+    mv -- "$file" "${file/%$1/$2}"
 done
 exit 0
 
