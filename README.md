@@ -24,6 +24,11 @@ If you want to exit your current session and still keep the script running in ba
 
 To run script with lower priority use nice. For example ``nice myscript``.
 
+To run script at another time (one time), you can use at utility. For example ``at -f myscript noon tomorrow``
+
+Another option is to use Cron or launchd or Upstart. 
+
+
 ## Tips and Tricks
 
 In rare cases when no "real" text editor is available in system (e.g. stripped down container) **cat** tool can be used to write a file interactively.
