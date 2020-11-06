@@ -39,3 +39,5 @@ ls /etc > file1
 
 # To overrule this option
 ls /etc >| file1
+
+
