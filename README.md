@@ -31,11 +31,19 @@ Another option is to use Cron or launchd or Upstart.
 
 ## Tips and Tricks
 
-In rare cases when no "real" text editor is available in system (e.g. stripped down container) **cat** tool can be used to write a file interactively.
+In rare cases when no "real" text editor is available in system (e.g. stripped down container) **cat** tool can be used to write a file interactively using HEREDOC EOF and END as demonstrated below.
 
+**Example 1**
 ```
 cat << EOF > /tmp/yourfilehere
 These contents will be written to the file.
         This line is indented.
 EOF
+```
+**Example 2**
+```
+cat > myhosts <<END
+127.0.0.1 localhost
+192.168.1.1 gateway
+END
 ```
