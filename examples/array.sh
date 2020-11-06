@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
-# Demostrates use of array
+# Description: Demostrates use of an indexed and associative arrays
 # Author: Maros Kukan
 
 
-# Storing Values in Basic Array
-x[0]="some"
-x[1]="word"
+# Declaring and storing Values in basic indexed array
+declare -a user_name
+user_name[0]="maros"
+user_name[1]="kukan"
 
-# Retrieving Values in Basic Array
-${x[0]}
-${x[1]}
+# Retrieving Values in Basic Array (The ^ is used to convert first letter to uppercase)
+printf "Welcome %s %s\n" "${user_name[0]^}" "${user_name[1]^}"
 
 # Retrieving all Values in Basic Array
-${x[@]}
-${x[*]}
+echo ${user_name[@]} # Prints "maros kukan"
+echo ${user_name[*]} # Prints "maros kukan"
+
+# Clearing variable
+unset user_name
 
 # Initializing an array
 ar=(1 2 3 a b c)
@@ -86,3 +89,10 @@ do
      echo $contestant
 done
 
+# Declaring and storing Values in associative array
+declare -A user_name
+user_name["first_name"]="maros"
+user_name["last_name"]="kukan"
+
+# Retrieving Values in Basic Array (The ^ is used to convert first letter to uppercase)
+printf "Welcome %s %s\n" "${user_name["first_name"]^}" "${user_name["last_name"]^}"
