@@ -30,3 +30,10 @@ LOG=log.file
 exec 4>&1
 exec > "$LOG"
 exec 1>&4 4>&-
+
+# HEREDOC
+cat > myfile <<END
+This is line 1
+This is line 2
+END
+
