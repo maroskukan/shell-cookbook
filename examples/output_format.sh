@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-# Demostrates usage of printf
+# Description: Demostrates use of printf
 # Author: Maros Kukan
+
+# Builtin commands use less resources and run more quickly
+type -a echo printf
 
 # Generic printf with single argument
 printf "Hello %s, how are you?\n" "$USER"
@@ -18,3 +21,4 @@ printf "|%20s | %20s |%20s |\n" $(ls)
 # Redirecting output to variable
 printf -v greeting "Hello %s, how are you?\n" "$USER"
 echo "$greeting"
+
