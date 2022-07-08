@@ -25,8 +25,11 @@ else
    export https_proxy=${http_proxy}
    export no_proxy=localhost,*.example.com
 
-   echo "Acquire::http::Proxy \"${http_proxy}\";" > test.txt
-   echo "Acquire::https::Proxy \"${http_proxy}\";" >> test.txt
+
+   # Todo: update APT or YUM configuration to use proxy
+   #echo "Acquire::http::Proxy \"${http_proxy}\";" > test.txt
+   #echo "Acquire::https::Proxy \"${http_proxy}\";" >> test.txt
+
    printf "\n\nProxy settings updated."
    printf "\nProxy external fqdn is $(dig -x $(curl -s ifconfig.me) +short)"
    printf "\n"
