@@ -23,7 +23,7 @@ else
    enc_proxy_pass=$(echo ${proxy_pass} | curl -Gso /dev/null -w %{url_effective} --data-urlencode @- "" | sed -E 's/..(.*).../\1/')
    export http_proxy=http://${enc_proxy_user}:${enc_proxy_pass}@${proxy_url}:${proxy_port}
    export https_proxy=${http_proxy}
-   export no_proxy=localhost,*.example.com
+   export no_proxy=localhost,*.example.com,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 
 
    # Todo: update APT or YUM configuration to use proxy
