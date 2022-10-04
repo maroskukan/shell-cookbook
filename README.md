@@ -31,6 +31,8 @@ Another option is to use Cron or launchd or Upstart.
 
 ## Tips and Tricks
 
+### HEREDOC
+
 In rare cases when no "real" text editor is available in system (e.g. stripped down container) **cat** tool can be used to write a file interactively using HEREDOC EOF and END as demonstrated below.
 
 **Example 1**
@@ -47,3 +49,26 @@ cat > myhosts <<END
 192.168.1.1 gateway
 END
 ```
+
+
+### Evalated Tee
+
+Consider the following example of appending a new host entry as standard user.
+
+```bash
+sudo echo "1.1.1.1 cloudflare" >> /etc/hosts
+```
+
+This will fail as the redirection happens at the shell level and therefore evalation is not effective. To solve this you could use the `tee` utility as shown below:
+
+```bash
+echo "1.1.1.1 cloudflare" | sudo tee -a /etc/hosts
+```
+
+Also `tee` can be used in `vim` while saving a file as a standard user. If you forget to evalate privileges for system files that you just editing, you would need to exit without saving changes. There is, however a better way to save changes, while in `vim` normal mode type:
+
+```bash
+w !sudo tee%
+```
+
+
