@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Description: Configures proxy server for current session
+# Author: Maros Kukan
 
 
 unset proxy_url
