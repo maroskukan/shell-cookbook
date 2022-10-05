@@ -19,7 +19,11 @@ elif getent passwd "$1" &>/dev/null; then
   echo "The user $1 already exists on this system"
   exit 2
 else
-  read -s -p "Enter a new password for the user $1: " USER_PASSWORD
+  while ! [ -n "$USER_PASSWORD" ]
+  do
+    read -s -p "Enter a new password for the user $1: " USER_PASSWORD
+    echo
+  done
   sudo useradd "$1"
   DISTRIB=$(awk -F= '/^ID_LIKE/{print $2}' /etc/os-release)
   if [ "$DISTRIB" = "fedora" ]; then 
