@@ -116,6 +116,9 @@ echo "$var_len"
 # $* contains all script arguments, but when double quoted: "$1 $2 $3 ... $N", parameters are joined togetner
 # $# contains number of script arguments
 # $? contains exit status for last command
+# $$ contains the current process id of running app
+# !$ contains the last argument
+
 ls /
 echo $?
 
