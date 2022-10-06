@@ -33,6 +33,7 @@ function set_password() {
   else
     echo "$1:$USER_PASSWORD" | sudo chpasswd
   fi
+  unset USER_PASSWORD
 }
 
 if [ "$#" -lt 1 ]; then
