@@ -72,3 +72,11 @@ w !sudo tee%
 ```
 
 
+## Block Device UUID
+
+Quickly retrieve block device UUID.
+
+```bash
+blkid /dev/sdb | awk '{ print $3 }' | cut -d'=' -f2 | tr -d '"'
+```
+
