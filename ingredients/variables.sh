@@ -117,14 +117,15 @@ echo "$var_len"
 # $# contains number of script arguments
 # $? contains exit status for last command
 # $$ contains the current process id of running app
-# !$ contains the last argument
+# $_ contains the last argument
 
 ls /
 echo $?
 
-# $! contains previous argument
+# $_ contains previous argument
 ls /
-ls -al $!
+ls -al $_
 
-
-
+# !! refers to last command
+cat /etc/sudoers.d
+sudo !!
