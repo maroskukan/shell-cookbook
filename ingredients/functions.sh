@@ -78,3 +78,8 @@ function separate () {
     done
     printf "$line\n"
 }
+
+# Simple function to clean file from empty lines and commends
+function clean_line () {
+    sed -i '/^#/d;/^$/d' $1
+}
