@@ -26,7 +26,7 @@ To run script with lower priority use nice. For example ``nice myscript``.
 
 To run script at another time (one time), you can use at utility. For example ``at -f myscript noon tomorrow``
 
-Another option is to use Cron or launchd or Upstart. 
+Another option is to use Cron or launchd or Upstart.
 
 
 ## Tips and Tricks
@@ -51,7 +51,7 @@ END
 ```
 
 
-### Evalated Tee
+### Elevated Tee
 
 Consider the following example of appending a new host entry as standard user.
 
@@ -72,7 +72,7 @@ w !sudo tee%
 ```
 
 
-## Block Device UUID
+### Block Device UUID
 
 Quickly retrieve block device UUID.
 
@@ -80,3 +80,6 @@ Quickly retrieve block device UUID.
 blkid /dev/sdb | awk '{ print $3 }' | cut -d'=' -f2 | tr -d '"'
 ```
 
+### Session recording
+
+Using the `script` utility you are able to record your shell session. Simply invoke this command and when done use `exit`. By default the session will be saved in current working directory as `typescript` text file.
