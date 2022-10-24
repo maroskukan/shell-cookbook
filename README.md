@@ -1,6 +1,22 @@
 # Shell Samples
 
-Shell script samples that provide demostration for bash capabilities and help automate everyday tasks.
+Shell script samples that provide demonstration for bash capabilities and help automate everyday tasks.
+
+- [Shell Samples](#shell-samples)
+  - [Documentation](#documentation)
+  - [Optional packages](#optional-packages)
+  - [Execution](#execution)
+  - [Tips and Tricks](#tips-and-tricks)
+    - [HEREDOC](#heredoc)
+    - [Elevated Tee](#elevated-tee)
+    - [Block Device UUID](#block-device-uuid)
+    - [Session recording](#session-recording)
+
+
+## Documentation
+
+- [Sockets](https://admin-ahead.com/forum/general-linux/how-to-open-a-tcpudp-socket-in-a-bash-shell/)
+
 
 ## Optional packages
 
@@ -12,7 +28,7 @@ sudo ./packages.sh
 
 ## Execution
 
-There are multiple ways how to execute a bash script. When #! (shebang) is used in the script header and you execute the script from your current bash process a new subprocess is started assuming executable permission have been set as demostrated in the above example.
+There are multiple ways how to execute a bash script. When #! (shebang) is used in the script header and you execute the script from your current bash process a new subprocess is started assuming executable permission have been set as demonstrated in the above example.
 
 If script does not leverage shebang, it can be executed using ``bash myscript`` syntax, executable permission is not required and this options allows use of bash options such as ``-x`` for debuging.
 
