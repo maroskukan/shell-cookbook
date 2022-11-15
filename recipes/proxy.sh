@@ -29,9 +29,9 @@ else
    export no_proxy=localhost,*.example.com,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 
 
-   # Todo: update APT or YUM configuration to use proxy
-   #echo "Acquire::http::Proxy \"${http_proxy}\";" > test.txt
-   #echo "Acquire::https::Proxy \"${http_proxy}\";" >> test.txt
+   # Todo: update APT or YUM configuration to use proxy...will likely need to run with sudo -E
+   # sed -i -e "s|Acquire::http::.*|Acquire::http::Proxy \"$http_proxy\";|g" /etc/apt/apt.conf.d/proxy.conf
+   # sed -i -e "s|Acquire::https::.*|Acquire::https::Proxy \"$http_proxy\";|g" /etc/apt/apt.conf.d/proxy.conf
 
    printf "\n\nProxy settings updated."
    printf "\nProxy external fqdn is $(dig -x $(curl -s ifconfig.me) +short)"
