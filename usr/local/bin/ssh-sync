@@ -23,7 +23,15 @@ do
   fi
 done
 
-bw sync
+
+# Check for valid session and sync
+if [[ -z ${BW_SESSION+x} ]]; then
+  echo "Please login with 'bw login' or `bw unlock` and export BW_SESSION."
+  exit 1
+else
+  bw sync
+fi 
+
 
 # Create subfolder if it does not exist
 if [ ! -d $HOME/$1 ]; then
@@ -46,3 +54,8 @@ do
 	|| echo -e "\e[31m[NOK]\e[0m Failed to created $HOME/$1/${_name}"
   fi
 done
+
+
+# Cleanup
+unset BW_SESSION
+
