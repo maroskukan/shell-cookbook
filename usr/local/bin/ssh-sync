@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+
+# List any dependencies
+reqs="bw jq"
+
+
+# Check for arguments
+if [ $# -eq 0 ]
+  then
+    echo "Usage:"
+    echo "$(basename $0) <ssh subfolder>"
+    exit 0
+fi
+
+
+# Check for any dependencies
+for req in $reqs
+do
+  if ! command -v $req &> /dev/null; then
+    echo "Missing dependency $req"
+    exit 1
+  fi
+done
+
+bw sync
+
+# Create subfolder if it does not exist
+if [ ! -d $HOME/$1 ]; then
+  mkdir -p -m 700 $HOME/$1 \
+    && echo -e "\e[32m[OK]\e[0m Directory $HOME/$1 created." \
+    || echo -e "\e[31m[NOK]\e[0m Failed to create $HOME/$1."
+fi
+
+# Retrieve and store each note from vault folder
+_fid=$(bw get folder $1 | jq -r '.id')
+for item in $(bw list items --folderid $_fid | jq -r '.[] | .id')
+do
+  _name=$(bw get item $item | jq -r '.name')
+  if [ -f $HOME/$1/$_name ]; then
+    echo -e "\e[34m[SKIP]\e[0m $HOME/$1/$_name already exists."
+  else
+    bw get item $item | jq -r '.notes' > $HOME/$1/$_name
+    chmod 600 $HOME/$1/$_name \
+	&& echo -e "\e[32m[OK]\e[0m $HOME/$1/$_name created." \
+	|| echo -e "\e[31m[NOK]\e[0m Failed to created $HOME/$1/${_name}"
+  fi
+done
