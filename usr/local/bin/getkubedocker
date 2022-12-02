@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+printf '\U1F47B  Resolving minikube address and certificate path ...\n'
+DOCKER_HOST="tcp://$(minikube ip):2376"
+DOCKER_CERT_PATH=$(wslpath "$(wslvar USERPROFILE)/.minikube/certs")
+printf '\U1F91F  Minikube address and certificate path resolved\n'
+
+printf '\U1F42C  Updating docker minikube context ...\n'
+docker context create minikube &>/dev/null
+docker context update minikube \
+--description "Secured connection from localhost toward minikube" \
+--docker "host=${DOCKER_HOST},ca=${DOCKER_CERT_PATH}/ca.pem,cert=${DOCKER_CERT_PATH}/cert.pem,key=${DOCKER_CERT_PATH}/key.pem" &>/dev/null && \
+printf '\U1F44C  Docker minikube context updated\n' && \
+printf '\U1F3AF  Use "docker context use minikube" command'

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+# Pass all arguments to Windows binary
+/mnt/c/ProgramData/chocolatey/bin/minikube.exe $@
+
+# If starting minikube, update the kube config
+if [ $1 == "start" ]; then
+    source getkubeconfig
+fi

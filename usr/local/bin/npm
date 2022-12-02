@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+# Run npm in container
+docker run --rm -i --user=$UID:1000 --name=npm-executable -w /usr/app -v $PWD:/usr/app node:16 npm "$@"

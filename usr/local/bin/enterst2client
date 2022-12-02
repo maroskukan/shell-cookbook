@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+cd $HOME/code/st2-docker
+docker-compose exec st2client bash
