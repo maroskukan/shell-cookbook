@@ -99,3 +99,12 @@ blkid /dev/sdb | awk '{ print $3 }' | cut -d'=' -f2 | tr -d '"'
 ### Session recording
 
 Using the `script` utility you are able to record your shell session. Simply invoke this command and when done use `exit`. By default the session will be saved in current working directory as `typescript` text file.
+
+### Bash shortcuts
+
+In order to display bash shortcuts that are available use the `bind` shell built in with `-P` option.
+
+```bash
+bind -P | grep "\\C-a"
+beginning-of-line can be found on "\C-a", "\eOH", "\e[1~", "\e[H".
+```
