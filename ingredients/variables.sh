@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Demostrates usage of variables, scopes and arrays
+# Description: Demostrates usage of variables, scopes and arrays
 # Author: Maros Kukan
 
 #
@@ -21,10 +21,9 @@ crontab -e
 unset EDITOR
 
 # Multiple words in single varilable
-# Bash creates two files, wherase Zsh creates single file
 files="file1 file2"
-zsh -c "touch $files"
-bash -c "touch $files"
+zsh -c "touch ${files}"
+bash -c "touch ${files}"
 
 
 #
@@ -39,7 +38,7 @@ declare -l username=Bob
 declare -u password=builder
 
 declare -p username password
-echo $useranme $password
+echo ${useranme} ${password}
 
 unset username password
 
@@ -64,9 +63,9 @@ days=Monday
 declare -p days
 
 declare p="4+5"
-echo $p # will print 4+5
+echo ${p} # will print 4+5
 declare -i p
-echo $p # will print 9
+echo ${p} # will print 9
 
 # Arithmetic expressions - C-like syntax
 let n=100/2
@@ -107,7 +106,7 @@ unset user_name
 # To retrieve lenght of string in variable
 declare var=Hello
 declare var_len=${#var}
-echo "$var_len"
+echo "${var_len}"
 
 # Special variables
 # $0 contains name of the script when it was called
