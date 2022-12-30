@@ -11,6 +11,9 @@ Shell script samples that provide demonstration for bash capabilities and help a
     - [Elevated Tee](#elevated-tee)
     - [Block Device UUID](#block-device-uuid)
     - [Session recording](#session-recording)
+    - [Bash shortcuts](#bash-shortcuts)
+    - [Shell Expansions](#shell-expansions)
+    - [Man pages](#man-pages)
 
 
 ## Documentation
@@ -107,4 +110,28 @@ In order to display bash shortcuts that are available use the `bind` shell built
 ```bash
 bind -P | grep "\\C-a"
 beginning-of-line can be found on "\C-a", "\eOH", "\e[1~", "\e[H".
+```
+
+### Shell Expansions
+
+```bash
+# Create a backup of 'my_config` with .bak suffix
+cp my_config{,.bak}
+
+# Create a backup of 'my_config` with current date suffix
+cp my_config{,.$(date +%F)}
+```
+
+### Man pages
+
+To display available man page(s) for a specific keyword.
+
+```bash
+man -k crontab
+```
+
+To disable screen clearing after exiting a man page, update the `LESS` variable.
+
+```bash
+LESS='-X' man crontab
 ```
