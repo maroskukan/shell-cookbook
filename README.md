@@ -11,6 +11,9 @@ Shell script samples that provide demonstration for bash capabilities and help a
     - [Elevated Tee](#elevated-tee)
     - [Block Device UUID](#block-device-uuid)
     - [Session recording](#session-recording)
+    - [Bash shortcuts](#bash-shortcuts)
+    - [Shell Expansions](#shell-expansions)
+    - [Man pages](#man-pages)
 
 
 ## Documentation
@@ -99,3 +102,36 @@ blkid /dev/sdb | awk '{ print $3 }' | cut -d'=' -f2 | tr -d '"'
 ### Session recording
 
 Using the `script` utility you are able to record your shell session. Simply invoke this command and when done use `exit`. By default the session will be saved in current working directory as `typescript` text file.
+
+### Bash shortcuts
+
+In order to display bash shortcuts that are available use the `bind` shell built in with `-P` option.
+
+```bash
+bind -P | grep "\\C-a"
+beginning-of-line can be found on "\C-a", "\eOH", "\e[1~", "\e[H".
+```
+
+### Shell Expansions
+
+```bash
+# Create a backup of 'my_config` with .bak suffix
+cp my_config{,.bak}
+
+# Create a backup of 'my_config` with current date suffix
+cp my_config{,.$(date +%F)}
+```
+
+### Man pages
+
+To display available man page(s) for a specific keyword.
+
+```bash
+man -k crontab
+```
+
+To disable screen clearing after exiting a man page, update the `LESS` variable.
+
+```bash
+LESS='-X' man crontab
+```

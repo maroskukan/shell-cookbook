@@ -84,6 +84,24 @@ function clean_line () {
     sed -i '/^#/d;/^$/d' $1
 }
 
+# Simple function to URL encode a data
+urlencode() {
+    local LC_ALL=C # support unicode: loop bytes, not characters
+    local c i n=${#1}
+    for (( i=0; i<n; i++ )); do
+        c="${1:i:1}"
+        case "$c" in
+            #' ') printf '+' ;; # HTML5 variant
+            [[:alnum:].~_-]) printf '%s' "$c" ;;
+            *) printf '%%%02X' "'$c" ;;
+        esac
+    done
+}
+
+# Creates directory with full path and moves into it
+mcd() {
+  mkdir -pv $1 && cd $1
+
 # Simple function to display file from comments
 function sc () {
     grep ^[^#] $1

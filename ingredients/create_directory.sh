@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Sample create directory script
+# Description: Sample create directory scripts
 # Author: Maros Kukan
 
 declare -l DIR
