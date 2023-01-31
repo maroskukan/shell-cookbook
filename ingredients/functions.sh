@@ -83,3 +83,8 @@ function separate () {
 function clean_line () {
     sed -i '/^#/d;/^$/d' $1
 }
+
+# Simple function to display file from comments
+function sc () {
+    grep ^[^#] $1
+}
