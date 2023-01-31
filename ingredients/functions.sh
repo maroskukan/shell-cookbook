@@ -101,4 +101,8 @@ urlencode() {
 # Creates directory with full path and moves into it
 mcd() {
   mkdir -pv $1 && cd $1
+
+# Simple function to display file from comments
+function sc () {
+    grep ^[^#] $1
 }
