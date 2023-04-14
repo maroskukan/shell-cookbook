@@ -85,7 +85,7 @@ function clean_line () {
 }
 
 # Simple function to URL encode a data
-urlencode() {
+function urlencode () {
     local LC_ALL=C # support unicode: loop bytes, not characters
     local c i n=${#1}
     for (( i=0; i<n; i++ )); do
@@ -99,6 +99,11 @@ urlencode() {
 }
 
 # Creates directory with full path and moves into it
-mcd() {
+function mcd () {
   mkdir -pv $1 && cd $1
+}
+
+# Simple function to display file from comments
+function sc () {
+    grep ^[^#] $1
 }

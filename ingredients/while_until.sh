@@ -18,6 +18,8 @@ while [[ -z $answer ]]; do
   read -r -p "What is your answer: " answer
 done
 
+# Keeps silently looping every 1 second until file exists
+while ! test -f my_file.txt; do sleep 1s; done
 
 declare -i x=10
 until (( x == 0 )); do
