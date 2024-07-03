@@ -7,7 +7,10 @@
 
 # $bing is needed to form the fully qualified URL for
 # the Bing pic of the day
-bing="www.bing.com"
+bing="https://www.bing.com"
+
+# Fail fast
+curl --output /dev/null --silent --head --fail "$bing" || exit 1
 
 # $xmlURL is needed to get the xml data from which
 # the relative URL for the Bing pic of the day is extracted
@@ -15,10 +18,10 @@ bing="www.bing.com"
 # The mkt parameter determines which Bing market you would like to
 # obtain your images from.
 # Valid values are: en-US, zh-CN, ja-JP, en-AU, en-UK, de-DE, en-NZ, en-CA.
-market="en-US"
+#
 # The idx parameter determines where to start from. 0 is the current day,
 # 1 the previous day, etc.
-xmlURL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=$market"
+xmlURL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=1&n=1&mkt=en-US"
 
 # $saveDir is used to set the location where Bing pics of the day
 # are stored.  $HOME holds the path of the current user's home directory
